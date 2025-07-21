@@ -36,5 +36,5 @@ reddit = praw.Reddit(
     user_agent=os.environ['REDDIT_USER_AGENT']
 )
 
-subreddit = reddit.subreddit("bee_haryatmo")  # Ganti dengan subreddit tujuan Anda
+subreddit = reddit.subreddit("indonesia")  # Ganti dengan subreddit tujuan Anda
 subreddit.submit(title, selftext=body)
