@@ -1,7 +1,7 @@
 import os
 import praw
 import requests
-from datetime import datetime
+from datetime import datetime, timezone
 
 def get_crypto_data():
     url = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana&vs_currencies=usd"
@@ -16,7 +16,7 @@ def get_crypto_data():
     return {}
 
 crypto = get_crypto_data()
-today = datetime.utcnow().strftime('%Y-%m-%d')
+today = datetime.now(timezone.utc).strftime('%Y-%m-%d')
 
 title = f"Crypto Market Update {today}"
 body = (
@@ -36,5 +36,5 @@ reddit = praw.Reddit(
     user_agent=os.environ['REDDIT_USER_AGENT']
 )
 
-subreddit = reddit.subreddit("bee_haryatmo")  # Ganti dengan subreddit tujuan Anda
+subreddit = reddit.subreddit("nama_subreddit_anda")  # Ganti dengan subreddit tujuan Anda
 subreddit.submit(title, selftext=body)
